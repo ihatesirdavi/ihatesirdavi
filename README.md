@@ -32,6 +32,7 @@ I'm particularly interested in the boundary between low-level systems, AI, graph
 | :-- | :-- | :-- |
 | [**GitHub profile source**](https://github.com/ihatesirdavi/ihatesirdavi) | Editable SVG design, Python validators, GitHub Actions, and documented lessons | Public and tested |
 | [**AcerolaFX contribution**](https://github.com/GarrettGunnell/AcerolaFX/pull/64) | Reproducing broken links, checking evidence, writing a minimal upstream patch | PR #64 submitted for review |
+| [**GDScript Toolkit contribution**](https://github.com/Scony/godot-gdscript-toolkit/pull/435) | Python formatter bug fix, regression tests, and semantic checks | PR #435 open; CI approval pending |
 | [**First Contributions fork**](https://github.com/ihatesirdavi/first-contributions) | Understanding fork, branch, commit and PR workflows | Public learning resource |
 | [**VS Code extensions workspace**](https://github.com/ihatesirdavi/vscode-extensions) | Shared extension workspace and provisional visual branding | Public source; release not verified |
 
@@ -58,6 +59,7 @@ These are tools I use or actively explore, not a claim of equal expertise or pub
 I prefer **small, reproducible upstream contributions**: verify the issue, check the maintainer's expectations, write an understandable change, test it, and make the PR reviewable.
 
 - [AcerolaFX issue #63](https://github.com/GarrettGunnell/AcerolaFX/issues/63) → [PR #64](https://github.com/GarrettGunnell/AcerolaFX/pull/64): remove broken README gallery links while preserving existing screenshots.
+- [GDScript Toolkit issue #394](https://github.com/Scony/godot-gdscript-toolkit/issues/394) -> [PR #435](https://github.com/Scony/godot-gdscript-toolkit/pull/435): preserve warning-annotation newlines and test the result.
 - [Explore repositories](https://github.com/ihatesirdavi?tab=repositories) and [pull requests](https://github.com/pulls?q=is%3Apr+author%3Aihatesirdavi) for the current public record.
 
 A submitted pull request is not the same as a merged contribution.
@@ -69,6 +71,7 @@ A submitted pull request is not the same as a merged contribution.
 | [**01 · Profile as code**](docs/lessons/01-profile-as-code.md) | Markdown, SVG, Git, local validation | Break an asset link and fix it |
 | [**02 · Upstream contribution**](docs/lessons/02-upstream-contribution.md) | Redirects, minimal diffs, branch hygiene | Explain the issue and inspect the PR |
 | [**03 · Public activity graphic**](docs/lessons/03-public-activity.md) | Python, dates, APIs, XML, regression testing | Change the time window and test the results |
+| [**04 - GDScript formatter bug**](docs/lessons/04-gdscript-formatter.md) | Python, syntax trees, regression tests, and AST safety | Reproduce 3 failures and verify the patch |
 
 ## Working method
 

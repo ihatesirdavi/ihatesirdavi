@@ -28,6 +28,7 @@ I explore the intersection of **software systems, artificial intelligence, real-
 ## Open source and learning in public
 
 - **Git/GitHub practice:** [First Contributions (fork)](https://github.com/ihatesirdavi/first-contributions), an introductory project for the fork → branch → commit → PR cycle.
+- **Upstream work:** [AcerolaFX PR #64](https://github.com/GarrettGunnell/AcerolaFX/pull/64) is submitted for maintainer review (not merged); [Lesson 02](docs/lessons/02-upstream-contribution.md) explains the investigation, patch, and tests.
 - **Profile as code:** [Lesson 01](docs/lessons/01-profile-as-code.md) explains this page's markup, SVG, tests, and publishing workflow.
 - **Upstream contributions:** Studying project guidelines and preparing small, reproducible fixes. Proposed work is not represented as merged work.
 

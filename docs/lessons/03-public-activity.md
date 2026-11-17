@@ -34,3 +34,11 @@ The graph measures public events, not GitHub's contribution calendar. One PushEv
 ### Questions
 
 Why do we use UTC rather than whatever time zone the runner happens to use? What can go wrong if a network error silently becomes a zero chart? What happens when an API only exposes a limited event history?
+
+## Real debugging result: local success, runner failure
+
+The first manual GitHub Actions update failed with HTTP 403: rate limit exceeded. The same public API call had worked locally. GitHub's shared hosted runners can exhaust the unauthenticated request quota even while a developer's own computer has not.
+
+We first reproduced the missing authentication behavior with a failing unit test. The fix passes the short-lived built-in GitHub Actions token through an environment variable to an authorized request for a public-only endpoint. The token is not printed, stored in the SVG, or committed.
+
+The regression test now verifies that the Authorization header is present when that environment variable exists. The updater still fails loudly on network/API errors instead of replacing a correct chart with invented zeroes.

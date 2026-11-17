@@ -7,6 +7,7 @@ from __future__ import annotations
 import argparse
 from datetime import date, datetime, timedelta, timezone
 import json
+import os
 from pathlib import Path
 import re
 from urllib.request import Request, urlopen
@@ -26,10 +27,14 @@ def fetch_public_events(username: str) -> list[dict]:
     """Read at most 300 recent public events. Fail rather than fake freshness."""
     events: list[dict] = []
     for page in range(1, 4):
+        headers = {"Accept": "application/vnd.github+json",
+                   "User-Agent": "profile-public-events-chart"}
+        token = os.environ.get("GH_ACTIVITY_TOKEN")
+        if token:
+            headers["Authorization"] = "Bearer " + token
         request = Request(
             public_events_url(username, page),
-            headers={"Accept": "application/vnd.github+json",
-                     "User-Agent": "profile-public-events-chart"}
+            headers=headers
         )
         with urlopen(request, timeout=20) as response:
             chunk = json.load(response)

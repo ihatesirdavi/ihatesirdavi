@@ -51,5 +51,20 @@ class ActivityTests(unittest.TestCase):
             public_events_url("../other-user", 1)
 
 
+    def test_uses_actions_token_only_for_public_api_request(self):
+        from unittest import mock
+        from io import BytesIO
+        from render_public_activity import fetch_public_events
+
+        with mock.patch.dict("os.environ", {"GH_ACTIVITY_TOKEN": "test-temporary-token"}):
+            with mock.patch("render_public_activity.urlopen") as opener:
+                opener.return_value.__enter__.return_value = BytesIO(b"[]")
+                self.assertEqual([], fetch_public_events("ihatesirdavi"))
+                request = opener.call_args.args[0]
+                self.assertIn("/users/ihatesirdavi/events/public?", request.full_url)
+                self.assertEqual(
+                    "Bearer test-temporary-token", request.get_header("Authorization")
+                )
+
 if __name__ == "__main__":
     unittest.main()

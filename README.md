@@ -1,6 +1,7 @@
 <div align="center">
-  <img src="assets/hero.svg" width="100%" alt="Sir Davi. I code sometimes. Function, design, systems and media." />
-  <p><strong>I code sometimes. I design, build, test, and make things work.</strong></p>
+  <img src="assets/hero.svg" width="100%" alt="Sir Davi banner: function, design, systems, media, and subtle finite animation." />
+  <p><strong>Function, design, systems and creative technology.</strong></p>
+  <p><sub>“I code sometimes…”</sub></p>
   <p>
     <a href="#public-previews">Previews</a> ·
     <a href="#featured-public-work">Public work</a> ·

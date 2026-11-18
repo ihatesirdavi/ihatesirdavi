@@ -40,7 +40,7 @@ class ProfileValidationTests(unittest.TestCase):
 
     def test_function_first_tagline_and_public_preview_link(self):
         content = (ROOT / "README.md").read_text(encoding="utf-8")
-        self.assertIn("I code sometimes", content)
+        self.assertIn("\u201cI code sometimes\u2026\u201d", content)
         self.assertIn("SIGNAL-001", content)
         self.assertIn("https://ihatesirdavi.github.io/preview-lab/", content)
 
@@ -50,7 +50,9 @@ class ProfileValidationTests(unittest.TestCase):
 
     def test_banner_tagline_animation_is_bounded(self):
         banner = (ROOT / "assets" / "hero.svg").read_text(encoding="utf-8")
-        self.assertIn("I CODE SOMETIMES", banner)
+        self.assertIn("\u201cI code sometimes\u2026\u201d", banner)
+        self.assertNotIn("I CODE SOMETIMES...", banner)
+        self.assertIn('font-size="16"', banner)
         self.assertNotIn('repeatCount="indefinite"', banner)
 
 if __name__ == "__main__":

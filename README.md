@@ -81,4 +81,4 @@ I care about clean boundaries, honest release status, reusable tools, and unders
 
 ---
 
-<sub>Profile content and design are maintained as source code. Some drafting and development is AI-assisted; claims and tests are checked against source.</sub>
+<sub>**Build and provenance:** Python 3.11, Git/GitHub CLI, GitHub Actions, SVG/XML checks; seven profile tests passed. Agent-assisted work under owner-directed human oversight, with factual claims checked against source and execution receipts; independent human code review and upstream acceptance are not assumed. [Full specs, test stack and evidence](docs/contribution-evidence.md).</sub>

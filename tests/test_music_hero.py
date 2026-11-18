@@ -37,6 +37,37 @@ class MusicHeroTests(unittest.TestCase):
         self.assertEqual((1600,470),struct.unpack("<HH",binary[6:10]))
         self.assertLess(gif.stat().st_size,9_000_000)
 
+    def test_banner_is_one_integrated_illustration_not_side_by_side_previews(self):
+        renderer=(ROOT/"scripts"/"render_music_hero.py").read_text(encoding="utf-8")
+        self.assertNotIn("rounded_preview(",renderer)
+        self.assertNotIn("hero-source-signal.png",renderer)
+        self.assertNotIn("hero-source-dynamics.png",renderer)
+        self.assertIn("draw_signal_flow(",renderer)
+        self.assertIn("draw_routing(",renderer)
+        self.assertIn("draw_orbits(",renderer)
+        self.assertFalse((ROOT/"assets"/"hero-source-signal.png").exists())
+        self.assertFalse((ROOT/"assets"/"hero-source-dynamics.png").exists())
+
+    def test_integrated_signal_and_orbits_are_deterministic(self):
+        import sys
+        sys.path.insert(0,str(ROOT/"scripts"))
+        from render_music_hero import signal_samples, orbital_paths
+        self.assertEqual(signal_samples(0.0),signal_samples(0.0))
+        self.assertEqual(orbital_paths(),orbital_paths())
+        self.assertEqual(3,len(orbital_paths()))
+        self.assertTrue(all(len(path)>20 for path in orbital_paths()))
+        self.assertTrue(max(abs(y) for y in signal_samples(0.0))<=1.0)
+
+    def test_animated_gif_has_finite_visible_motion(self):
+        from PIL import Image, ImageChops
+        with Image.open(ROOT/"assets"/"hero-music-systems.gif") as gif:
+            self.assertEqual(1,gif.info.get("loop"))
+            self.assertLessEqual(gif.n_frames,36)
+            gif.seek(0)
+            start=gif.convert("RGB")
+            gif.seek(min(5,gif.n_frames-1))
+            later=gif.convert("RGB")
+            self.assertIsNotNone(ImageChops.difference(start,later).getbbox())
     def test_source_provenance_not_logo_counterfeit(self):
         guide=(ROOT/"docs"/"hero-provenance.md").read_text(encoding="utf-8")
         self.assertIn("SIGNAL-001",guide)

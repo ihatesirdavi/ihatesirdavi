@@ -41,40 +41,33 @@ class MusicHeroTests(unittest.TestCase):
         self.assertEqual((1600,470),struct.unpack("<HH",binary[6:10]))
         self.assertLess(gif.stat().st_size,9_000_000)
 
-    def test_banner_is_one_integrated_illustration_not_side_by_side_previews(self):
+    def test_banner_uses_a_single_studio_inspired_visual_not_preview_images(self):
         renderer=(ROOT/"scripts"/"render_music_hero.py").read_text(encoding="utf-8")
-        self.assertNotIn("rounded_preview(",renderer)
-        self.assertNotIn("hero-source-signal.png",renderer)
-        self.assertNotIn("hero-source-dynamics.png",renderer)
-        self.assertIn("draw_signal_flow(",renderer)
-        self.assertIn("draw_routing(",renderer)
-        self.assertIn("draw_orbits(",renderer)
+        for forbidden in ("rounded_preview(", "hero-source-signal.png",
+                          "hero-source-dynamics.png", "def draw_routing(",
+                          "def draw_orbits(", "def curved_route("):
+            self.assertNotIn(forbidden, renderer)
+        for expected in ("draw_arrangement(", "draw_signal(", "draw_automation("):
+            self.assertIn(expected, renderer)
         self.assertFalse((ROOT/"assets"/"hero-source-signal.png").exists())
         self.assertFalse((ROOT/"assets"/"hero-source-dynamics.png").exists())
 
-    def test_integrated_signal_and_orbits_are_deterministic(self):
+    def test_music_signal_and_control_envelope_are_deterministic(self):
         import sys
         sys.path.insert(0,str(ROOT/"scripts"))
-        from render_music_hero import signal_samples, orbital_paths
-        self.assertEqual(signal_samples(0.0),signal_samples(0.0))
-        self.assertEqual(orbital_paths(),orbital_paths())
-        self.assertEqual(3,len(orbital_paths()))
-        self.assertTrue(all(len(path)>20 for path in orbital_paths()))
-        self.assertTrue(max(abs(y) for y in signal_samples(0.0))<=1.0)
+        from render_music_hero import signal_samples, automation_curve
+        self.assertEqual(signal_samples(0.0), signal_samples(0.0))
+        self.assertEqual(automation_curve(), automation_curve())
+        self.assertGreater(len(automation_curve()),100)
+        self.assertTrue(all(abs(v)<=1 for v in signal_samples(0.0)))
 
-    def test_visual_story_survives_github_scale(self):
-        """Avoid a barely visible technical side when the banner is half-sized."""
+    def test_studio_visual_survives_github_scale(self):
+        """Production-grid visuals must remain readable at 800px wide."""
         from PIL import Image
         with Image.open(ROOT/"assets"/"hero-music-systems.png") as im:
-            tiny=im.convert("RGB").resize((800,235),Image.Resampling.LANCZOS)
-            gray=tiny.convert("L")
-            def bright(box, threshold):
-                return sum(pixel>threshold for pixel in gray.crop(box).getdata())
-            # Half-scale equivalents of routing / dynamics / first stage label.
-            self.assertGreater(bright((520,112,678,178),100),570)
-            self.assertGreater(bright((660,70,800,195),100),330)
-            self.assertGreater(bright((310,122,416,140),95),70)
-
+            tiny=im.convert("RGB").resize((800,235),Image.Resampling.LANCZOS).convert("L")
+            box=tiny.crop((350,70,780,215))
+            self.assertGreater(sum(v>100 for v in box.getdata()),1800)
     def test_does_not_invent_a_decorative_pseudo_logo(self):
         renderer=(ROOT/"scripts"/"render_music_hero.py").read_text(encoding="utf-8")
         self.assertNotIn("Three diagonal strokes from the prior creator design guide",renderer)

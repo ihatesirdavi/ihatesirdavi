@@ -1,7 +1,8 @@
 <div align="center">
-  <img src="assets/hero.svg" width="100%" alt="Sir Davi. Digital architect. Systems, intelligence, graphics and media." />
-  <p><strong>Independent developer · creative technologist · producer</strong></p>
+  <img src="assets/hero.svg" width="100%" alt="Sir Davi. I code sometimes. Function, design, systems and media." />
+  <p><strong>I code sometimes. I design, build, test, and make things work.</strong></p>
   <p>
+    <a href="#public-previews">Previews</a> ·
     <a href="#featured-public-work">Public work</a> ·
     <a href="#open-source">Open source</a> ·
     <a href="#public-activity">Activity</a> ·
@@ -11,7 +12,7 @@
 
 ## About
 
-I'm **Sir Davi**, a multidisciplinary creator working across software, research, and independent media through **Lucky Number Media**.
+I'm **Sir Davi**, a multidisciplinary creator working across functional design, interactive systems, research, and independent media. The projects come first: what they do, how people use them, and how they feel.
 
 My background includes music production, writing and recording, video editing, and visual design. That creative work informs how I approach engineering: start with the whole system, investigate the mechanics, build a working example, and validate what it really does.
 
@@ -23,20 +24,27 @@ I'm particularly interested in the boundary between low-level systems, AI, graph
 | :-- | :-- |
 | **Software & systems** | CLI tooling, integrations, desktop/web applications, reliable test and release workflows |
 | **Graphics & interactivity** | Shaders, simulation, game technology, real-time rendering, interface animation |
-| **AI & research** | Model tooling, repeatable experiments, applied systems research |
+| **Agents & research** | Model tooling, agent workflows, repeatable experiments and applied systems research |
 | **Media & production** | Rap/hip-hop, recording, video production, editing, visual storytelling, creative tooling |
 
+## Public previews
+
+**[SIGNAL-001](https://ihatesirdavi.github.io/preview-lab/)** is a small, original interactive visual study of motion, mode switching and bounded playback. The real public prototype is accessible in the browser; its source, checks and release-state contract live in the [Preview Lab repository](https://github.com/ihatesirdavi/preview-lab).
+
+<a href="https://ihatesirdavi.github.io/preview-lab/"><img src="https://raw.githubusercontent.com/ihatesirdavi/preview-lab/main/docs/preview-still.png" width="100%" alt="Real Chrome capture of the SIGNAL-001 prototype interface with a dark procedural field and functional playback controls" /></a>
+
+<sub>Authentic headless Chrome capture, not a mockup. Source tests and the browser-startup smoke passed; complete interaction/visual owner review and packaging remain separate. All unreleased projects use public codenames without revealing private mappings.</sub>
 ## Featured public work
 
 | Work | What it demonstrates | Current state |
 | :-- | :-- | :-- |
+| [**SIGNAL-001 / Preview Lab**](https://ihatesirdavi.github.io/preview-lab/) | Original bounded interactive field, three visual modes, tested source and preview evidence | Public prototype; owner acceptance pending |
 | [**GitHub profile source**](https://github.com/ihatesirdavi/ihatesirdavi) | Editable SVG design, Python validators, GitHub Actions, and documented lessons | Public and tested |
 | [**AcerolaFX contribution**](https://github.com/GarrettGunnell/AcerolaFX/pull/64) | Reproducing broken links, checking evidence, writing a minimal upstream patch | PR #64 submitted for review |
 | [**GDScript Toolkit contribution**](https://github.com/Scony/godot-gdscript-toolkit/pull/435) | Python formatter bug fix, regression tests, and semantic checks | PR #435 open; CI approval pending |
-| [**First Contributions fork**](https://github.com/ihatesirdavi/first-contributions) | Understanding fork, branch, commit and PR workflows | Public learning resource |
 | [**VS Code extensions workspace**](https://github.com/ihatesirdavi/vscode-extensions) | Shared extension workspace and provisional visual branding | Public source; release not verified |
 
-My larger engineering and creative projects are developed independently. This page links only public material and does not claim that private work has been shipped.
+Projects in transition are represented by owner-cleared public previews under codenames only. Private names, source and packaging status remain withheld until the owner approves release.
 
 ## Tools and creative software
 
@@ -75,10 +83,10 @@ A submitted pull request is not the same as a merged contribution.
 
 ## Working method
 
-**Understand → practice → validate → explain.**
+**Understand → design → practice → validate → explain.**
 
 I care about clean boundaries, honest release status, reusable tools, and understanding *why* a solution works.
 
 ---
 
-<sub>**Build and provenance:** Python 3.11, Git/GitHub CLI, GitHub Actions, SVG/XML checks; seven profile tests and CI passed. I personally review and double-check the work and its factual claims, with agents assisting implementation, review, and source verification. External maintainer acceptance remains separate. [Specs, test stack, and evidence](docs/contribution-evidence.md).</sub>
+<sub>**Build and provenance:** Python 3.11, Git/GitHub CLI, GitHub Actions, SVG/XML checks; profile test results and CI are recorded in GitHub Actions. I personally review and double-check the work and its factual claims, with agents assisting implementation, review, and source verification. External maintainer acceptance remains separate. [Specs, test stack, and evidence](docs/contribution-evidence.md).</sub>

@@ -58,6 +58,14 @@ class MusicHeroTests(unittest.TestCase):
         self.assertTrue(all(len(path)>20 for path in orbital_paths()))
         self.assertTrue(max(abs(y) for y in signal_samples(0.0))<=1.0)
 
+    def test_background_grid_remains_visually_subordinate(self):
+        from PIL import Image
+        with Image.open(ROOT/"assets"/"hero-music-systems.png") as im:
+            im=im.convert("RGB")
+            # This crosses the right-side design grid, above the foreground artwork.
+            grid=im.getpixel((717,106))
+            ground=im.getpixel((718,107))
+            self.assertLess(max(abs(a-b) for a,b in zip(grid,ground)),20)
     def test_animated_gif_has_finite_visible_motion(self):
         from PIL import Image, ImageChops
         with Image.open(ROOT/"assets"/"hero-music-systems.gif") as gif:

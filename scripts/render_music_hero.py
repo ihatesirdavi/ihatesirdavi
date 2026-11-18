@@ -213,7 +213,7 @@ def typography(layer):
     for i in range(3):
         x=62+i*10
         d.line((x,72,x+27,39),fill=(198,160,142,166),width=3)
-    d.text((111,42),"RECORDING ARTIST   /   PRODUCER   /   CREATIVE TECHNOLOGY",
+    d.text((111,42),"RECORDING ARTIST   /   MUSIC PRODUCER",
            font=font("mono",16),fill=(201,189,207,235))
     d.text((78,101),"Sir Davi",font=font("head",99),fill=(*PALETTE["ink"],255))
     d.text((83,239),"Music, media, and systems.",font=font("body",33),
@@ -228,12 +228,16 @@ def typography(layer):
 
 def frame(phase=0.):
     canvas=backdrop()
-    # Background grid is subtle, and confined to the active visual field.
-    gd=ImageDraw.Draw(canvas)
+    # The grid must be alpha-composited. Drawing translucent RGBA
+    # directly onto the opaque base overwrites its alpha and produces
+    # bright lines after RGB conversion.
+    grid=Image.new("RGBA",SIZE,(0,0,0,0))
+    gd=ImageDraw.Draw(grid)
     for x in range(605,1600,56):
-        gd.line((x,0,x,469),fill=(143,123,151,13),width=1)
+        gd.line((x,0,x,469),fill=(143,123,151,19),width=1)
     for y in range(50,470,56):
-        gd.line((600,y,1599,y),fill=(143,123,151,13),width=1)
+        gd.line((600,y,1599,y),fill=(143,123,151,19),width=1)
+    canvas.alpha_composite(grid)
     ink=Image.new("RGBA",SIZE,(0,0,0,0))
     draw_signal_flow(ink,phase)
     draw_routing(ink)

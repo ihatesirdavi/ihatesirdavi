@@ -1,5 +1,5 @@
 <div align="center">
-  <a href="assets/hero-music-systems.png"><img src="assets/hero-music-systems.gif" width="100%" alt="Sir Davi: recording artist, music producer, creative technologist. A music-to-systems banner composed using authentic SIGNAL-001 and DYNAMICS-002 visual captures; limited-duration signal animation." /></a>
+  <a href="assets/hero-music-systems.png"><img src="assets/hero-music-systems.gif" width="100%" alt="Sir Davi: recording artist and producer, creative systems designer. One continuous composition of musical arrangement, synthetic waveform, signal routing, and mathematically simulated three-body motion." /></a>
   <p><strong>Recording artist and music producer. Creative technologist and systems designer.</strong></p>
   <p><sub>“I code sometimes…”</sub></p>
   <p>

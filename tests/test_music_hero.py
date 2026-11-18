@@ -8,6 +8,10 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class MusicHeroTests(unittest.TestCase):
+    def test_existing_ci_installs_renderer_dependency(self):
+        workflow=(ROOT/".github"/"workflows"/"validate.yml").read_text(encoding="utf-8")
+        self.assertIn("python -m pip install Pillow==11.1.0",workflow)
+        self.assertIn("python -m unittest discover -s tests -v",workflow)
     def test_readme_replaces_svg_with_existing_project_backed_banner(self):
         readme=(ROOT/"README.md").read_text(encoding="utf-8")
         self.assertIn('src="assets/hero-music-systems.gif"',readme)
@@ -37,6 +41,45 @@ class MusicHeroTests(unittest.TestCase):
         self.assertEqual((1600,470),struct.unpack("<HH",binary[6:10]))
         self.assertLess(gif.stat().st_size,9_000_000)
 
+    def test_banner_is_one_integrated_illustration_not_side_by_side_previews(self):
+        renderer=(ROOT/"scripts"/"render_music_hero.py").read_text(encoding="utf-8")
+        self.assertNotIn("rounded_preview(",renderer)
+        self.assertNotIn("hero-source-signal.png",renderer)
+        self.assertNotIn("hero-source-dynamics.png",renderer)
+        self.assertIn("draw_signal_flow(",renderer)
+        self.assertIn("draw_routing(",renderer)
+        self.assertIn("draw_orbits(",renderer)
+        self.assertFalse((ROOT/"assets"/"hero-source-signal.png").exists())
+        self.assertFalse((ROOT/"assets"/"hero-source-dynamics.png").exists())
+
+    def test_integrated_signal_and_orbits_are_deterministic(self):
+        import sys
+        sys.path.insert(0,str(ROOT/"scripts"))
+        from render_music_hero import signal_samples, orbital_paths
+        self.assertEqual(signal_samples(0.0),signal_samples(0.0))
+        self.assertEqual(orbital_paths(),orbital_paths())
+        self.assertEqual(3,len(orbital_paths()))
+        self.assertTrue(all(len(path)>20 for path in orbital_paths()))
+        self.assertTrue(max(abs(y) for y in signal_samples(0.0))<=1.0)
+
+    def test_background_grid_remains_visually_subordinate(self):
+        from PIL import Image
+        with Image.open(ROOT/"assets"/"hero-music-systems.png") as im:
+            im=im.convert("RGB")
+            # This crosses the right-side design grid, above the foreground artwork.
+            grid=im.getpixel((717,106))
+            ground=im.getpixel((718,107))
+            self.assertLess(max(abs(a-b) for a,b in zip(grid,ground)),20)
+    def test_animated_gif_has_finite_visible_motion(self):
+        from PIL import Image, ImageChops
+        with Image.open(ROOT/"assets"/"hero-music-systems.gif") as gif:
+            self.assertEqual(1,gif.info.get("loop"))
+            self.assertLessEqual(gif.n_frames,36)
+            gif.seek(0)
+            start=gif.convert("RGB")
+            gif.seek(min(5,gif.n_frames-1))
+            later=gif.convert("RGB")
+            self.assertIsNotNone(ImageChops.difference(start,later).getbbox())
     def test_source_provenance_not_logo_counterfeit(self):
         guide=(ROOT/"docs"/"hero-provenance.md").read_text(encoding="utf-8")
         self.assertIn("SIGNAL-001",guide)

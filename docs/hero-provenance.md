@@ -1,44 +1,31 @@
-# Profile banner source and review
+# Music-first GitHub profile banner: editorial revision
 
-**Update:** November 18, 2026. Public design candidate; owner visual review pending.
+**Date:** November 18, 2026
+**Source:** scripts/render_music_hero.py
+**State:** public profile candidate; owner visual review pending, not accepted.
 
-## The actual composition
+## Editorial direction
 
-The previous iteration placed two screenshots side by side. The present revision corrects that mistake. It renders **one unified field** combining music arrangement, synthetic waveform, signal routing and mathematically simulated gravitational paths. There are no screenshot panels, embedded preview images or unpublished source assets.
+The original integrated-banner experiment literally joined a waveform to routing nodes and an orbital figure-eight. Owner feedback identified that literal connector treatment as unsuitable for the public identity. The new composition removes those connectors, nodes and orbital illustrations entirely.
 
-The static PNG and finite GIF are produced by scripts/render_music_hero.py (Python and Pillow). The profile uses the same asset names to avoid breaking its public banner link. The original SVG was superseded previously.
+The design represents the creator's professional recording and production foundation through a studio-inspired grid with layered abstract audio, arrangement clips and a keyframed automation envelope. These are programmatically generated from deterministic equations, not an FL Studio screenshot or a real sound recording. The systems connection is conceptual and functional: coordinated signals, timing, structure, automation and iterative refinement. No fake technical result, benchmark or private product is depicted.
 
-The original algorithmic study **SIGNAL-001** inspired the procedural signal and visual-mode concepts, while the existing public educational **DYNAMICS-002** inspired the softened three-body velocity Verlet model and orbital paths. This does not reproduce their interfaces or imply that they are installed or released products. The audio signal is **synthetic**, not the owner's copyrighted recording or a claim of an actual DAW waveform.
+The left typographic hierarchy continues to say recording artist/music producer, Sir Davi, music/media/systems, and the small quoted line. A dark charcoal ground with pale lettering, restrained copper, plum and teal accents respects the owner's provisional design direction. The original owner logo asset remains unverified and is not fabricated.
 
-## Design and motion
+## Prior design history and related public work
 
-The color direction is informed by the owner's provisional Sir Davi design reference: deep charcoal, off-white lettering, muted mauve and copper. Signal routing transitions gradually from warm audio elements through processing nodes to restrained cooler trajectories. Arrangement lanes, nodes and gravitational paths are built from original geometry in one canvas, not cards or screenshots.
+The public standalone studies SIGNAL-001 and DYNAMICS-002 remain linked separately below in the GitHub profile. The previous hero graph and screenshots were experiments and are no longer banner art. This does not upgrade those projects to released products or expose their private mappings.
 
-The original Sir Davi logo/wordmark was referenced in creator notes but is not present as a verified, publishable original logo asset. The displayed text treatment is not a fabricated logo. Logo integration requires a verified owner-provided export.
+## Evidence and rendering
 
-The GitHub banner's PNG is 1600 x 470. The GIF contains 18 frames with 140ms per frame and a finite two-cycle animation before it stops. The motion animates the synthetic signal and orbital highlights; there is no perpetual playback. GitHub determines actual playback and caching behavior.
+The static PNG and finite GIF are both 1600 by 470. The GIF uses 18 frames at 140 ms each, loop count 1 (two finite cycles). The renderer needs Python and Pillow and draws with locally installed system fonts; font files are not redistributed. Raster appearance can vary between operating systems.
 
-## Optical refinement / November 18, 2026
+The source suite tests asset dimensions, deterministic synthetic signal and automation, editorial layout separation, small-display contrast, finite animation, provenance and profile links. The existing GitHub Actions workflow runs the suite with pinned Pillow 11.1.0.
 
-The first integrated candidate placed too much visual weight on its waveform while the orbital paths, routing and stage labels faded on GitHub-sized displays. This update changes only the source-rendered composition and its optical acceptance tests:
+**Human review:** Agent-assisted implementation under owner-directed human oversight and factual validation. Passing tests, CI, or a visually plausible render does not constitute the owner's final aesthetic approval or original logo authorization.
 
-- Removes three unrelated decorative strokes so they cannot be mistaken for the owner's original logo.
-- Increases signal, route and orbital line presence and makes the three stage labels legible at half size.
-- Keeps the faint background grid and muted palette subordinate to the actual signal, path and identity.
-- Corrects small metadata separators to system-font-safe punctuation. Motion remains finite and the original geometry/test foundations remain unchanged.
-
-**Observed QA at 800x235 (Windows 11, Pillow 11.1.0, half-size PNG, grayscale brightness >100):** routing ROI pixels improved 189 to 640, orbital ROI 107 to 373. Stage-label ROI at brightness >95 improved 2 to 88. Those are *render readability checks*, not proof of user aesthetic acceptance; perceptual judgment still requires owner review.
-## November 18 stage-overlap repair
-
-The former audio-stage waveform extended into multiple transition strands, the branching routing paths gathered too closely at their endpoints, and the orbital guide encroached on the last routing node. The source renderer now uses a shorter arrangement region, a compact three-strand transition, spaced upper and lower routing branches, and a smaller orbital field centered farther right. The routing output connects toward the orbit with one deliberate bridge; it does not draw across the trajectories.
-
-The new tests/test_hero_overlap.py regression renders separate transparent layer masks and checks their horizontal bounds and shared-ink pixels before compositing. This is a geometry regression check, not a substitute for owner visual review. The dimensions, source test stack, finite GIF behavior, music-first text and public/private source boundaries remain unchanged.
-## Reproduce and evidence
+## Reproduce
 
     python scripts/render_music_hero.py
     python -m unittest discover -s tests -v
     python scripts/validate_profile.py
-
-Source environment: Windows 11, Python 3.11, Pillow 11.1.0. Fonts resolve to local installed system fonts and are not distributed. Cross-machine pixel fidelity may differ due to fonts or rasterization, but design intent and generated-asset checks are source-inspectable.
-
-**Review pending:** These tests prove source reproducibility, bounded asset structure and finite motion, not owner aesthetic acceptance. The banner is not a private software package and does not authorize disclosure of private project names.

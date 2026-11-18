@@ -44,6 +44,13 @@ class ProfileValidationTests(unittest.TestCase):
         self.assertIn("SIGNAL-001", content)
         self.assertIn("https://ihatesirdavi.github.io/preview-lab/", content)
 
+    def test_public_dynamics_study_is_linked_without_release_claim(self):
+        content = (ROOT / "README.md").read_text(encoding="utf-8")
+        self.assertIn("DYNAMICS-002", content)
+        self.assertIn("https://ihatesirdavi.github.io/preview-lab/dynamics.html", content)
+        self.assertIn("preview-lab/main/docs/dynamics-still.png", content)
+        self.assertIn("owner review pending", content.lower())
+        self.assertNotIn("Lucky Number Media", content)
     def test_real_preview_image_is_linked(self):
         content = (ROOT / "README.md").read_text(encoding="utf-8")
         self.assertIn("preview-lab/main/docs/preview-still.png", content)

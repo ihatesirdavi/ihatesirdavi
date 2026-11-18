@@ -30,16 +30,24 @@ I'm particularly interested in the boundary between low-level systems, AI, graph
 
 ## Public previews
 
-**[SIGNAL-001](https://ihatesirdavi.github.io/preview-lab/)** is a small, original interactive visual study of motion, mode switching and bounded playback. The real public prototype is accessible in the browser; its source, checks and release-state contract live in the [Preview Lab repository](https://github.com/ihatesirdavi/preview-lab).
+A narrow window into original, standalone functional and visual studies. Unreleased products are represented by public codenames only, without exposing their private identity, source, or release mapping.
 
-<a href="https://ihatesirdavi.github.io/preview-lab/"><img src="https://raw.githubusercontent.com/ihatesirdavi/preview-lab/main/docs/preview-still.png" width="100%" alt="Real Chrome capture of the SIGNAL-001 prototype interface with a dark procedural field and functional playback controls" /></a>
+<div align="center">
+  <a href="https://ihatesirdavi.github.io/preview-lab/"><img src="https://raw.githubusercontent.com/ihatesirdavi/preview-lab/main/docs/preview-still.png" width="48%" alt="Actual Chrome capture of SIGNAL-001, an interactive signal field" /></a>
+  <a href="https://ihatesirdavi.github.io/preview-lab/dynamics.html"><img src="https://raw.githubusercontent.com/ihatesirdavi/preview-lab/main/docs/dynamics-still.png" width="48%" alt="Actual Chrome capture of DYNAMICS-002, a three-body gravitational study" /></a>
+</div>
 
-<sub>Authentic headless Chrome capture, not a mockup. Source tests and the browser-startup smoke passed; complete interaction/visual owner review and packaging remain separate. All unreleased projects use public codenames without revealing private mappings.</sub>
+**[SIGNAL-001](https://ihatesirdavi.github.io/preview-lab/):** Three visual states and bounded interactive animation.
+
+**[DYNAMICS-002](https://ihatesirdavi.github.io/preview-lab/dynamics.html):** A deterministic three-body simulation, testable numerical integration, and 60/30 FPS rendering profiles.
+
+<sub>Both are standalone public prototypes, with authentic Chrome captures and source/browser checks. Owner review pending; neither is a packaged release or a disclosure of private project identities. [Evidence and source](https://github.com/ihatesirdavi/preview-lab).</sub>
 ## Featured public work
 
 | Work | What it demonstrates | Current state |
 | :-- | :-- | :-- |
 | [**SIGNAL-001 / Preview Lab**](https://ihatesirdavi.github.io/preview-lab/) | Original bounded interactive field, three visual modes, tested source and preview evidence | Public prototype; owner acceptance pending |
+| [**DYNAMICS-002 / Preview Lab**](https://ihatesirdavi.github.io/preview-lab/dynamics.html) | Three-body gravitational simulation, measured energy drift, native regression tests, bounded visuals | Public prototype; owner review pending |
 | [**GitHub profile source**](https://github.com/ihatesirdavi/ihatesirdavi) | Editable SVG design, Python validators, GitHub Actions, and documented lessons | Public and tested |
 | [**AcerolaFX contribution**](https://github.com/GarrettGunnell/AcerolaFX/pull/64) | Reproducing broken links, checking evidence, writing a minimal upstream patch | PR #64 submitted for review |
 | [**GDScript Toolkit contribution**](https://github.com/Scony/godot-gdscript-toolkit/pull/435) | Python formatter bug fix, regression tests, and semantic checks | PR #435 open; CI approval pending |

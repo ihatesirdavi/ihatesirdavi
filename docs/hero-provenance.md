@@ -18,6 +18,16 @@ The original Sir Davi logo/wordmark was referenced in creator notes but is not p
 
 The GitHub banner's PNG is 1600 x 470. The GIF contains 18 frames with 140ms per frame and a finite two-cycle animation before it stops. The motion animates the synthetic signal and orbital highlights; there is no perpetual playback. GitHub determines actual playback and caching behavior.
 
+## Optical refinement / November 18, 2026
+
+The first integrated candidate placed too much visual weight on its waveform while the orbital paths, routing and stage labels faded on GitHub-sized displays. This update changes only the source-rendered composition and its optical acceptance tests:
+
+- Removes three unrelated decorative strokes so they cannot be mistaken for the owner's original logo.
+- Increases signal, route and orbital line presence and makes the three stage labels legible at half size.
+- Keeps the faint background grid and muted palette subordinate to the actual signal, path and identity.
+- Corrects small metadata separators to system-font-safe punctuation. Motion remains finite and the original geometry/test foundations remain unchanged.
+
+**Observed QA at 800x235 (Windows 11, Pillow 11.1.0, half-size PNG, grayscale brightness >100):** routing ROI pixels improved 189 to 640, orbital ROI 107 to 373. Stage-label ROI at brightness >95 improved 2 to 88. Those are *render readability checks*, not proof of user aesthetic acceptance; perceptual judgment still requires owner review.
 ## Reproduce and evidence
 
     python scripts/render_music_hero.py

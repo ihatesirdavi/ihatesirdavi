@@ -126,14 +126,14 @@ def draw_signal_flow(layer, phase=0.):
             y=375+lane*17-(i%3)*4
             length=13+(i*7+lane*3)%20
             d.rounded_rectangle((x,y,x+length,y+5),radius=2,
-              fill=(201,147+lane*7,124+lane*12,90+(i%3)*25))
+              fill=(214,158+lane*7,134+lane*12,132+(i%3)*24))
     # A measured-looking waveform drawn explicitly from SYNTHETIC amplitudes.
     samples=signal_samples(phase)
     for i,v in enumerate(samples):
         x=629+i*1.18
         fade=(1-min(1,abs(x-833)/275))*.5+.5
-        amp=v*(9+22*fade)
-        color=(215,149,112,int(100+110*fade))
+        amp=v*(15+35*fade)
+        color=(232,167,128,int(158+90*fade))
         d.line((x,335-abs(amp),x,335+abs(amp)),fill=color,width=1)
     # Flow smoothly leaves the track view, leading into nodes with no rectangle seam.
     for strand in range(5):
@@ -144,7 +144,7 @@ def draw_signal_flow(layer, phase=0.):
             amp=(1-u)**1.5*(4+strand*4)
             y=cy+amp*math.sin((x-882)/37+phase*.7+strand*.52)
             pts.append((x,y))
-        ink_line(d,pts,(201,148+strand*5,144+strand*7,72+strand*17),1)
+        ink_line(d,pts,(213,152+strand*5,144+strand*7,108+strand*23),2)
     return (1128, 284)
 
 def curved_route(d, p1, p2, c1, c2, color, width=2):
@@ -161,16 +161,16 @@ def draw_routing(layer):
     """Branching IO/processing graph is the same continuous signal, not a UI mock."""
     d=ImageDraw.Draw(layer)
     nodes=[(1102,303),(1184,249),(1262,315),(1334,260)]
-    curved_route(d,(1040,305),nodes[0],(1077,301),(1076,306),(218,171,139,159),2)
-    curved_route(d,nodes[0],nodes[1],(1129,270),(1145,253),(179,144,186,177),2)
-    curved_route(d,nodes[0],nodes[2],(1154,332),(1210,334),(147,151,182,144),2)
-    curved_route(d,nodes[1],nodes[3],(1238,230),(1272,245),(132,180,196,161),2)
-    curved_route(d,nodes[2],nodes[3],(1302,315),(1295,275),(141,171,188,135),2)
+    curved_route(d,(1040,305),nodes[0],(1077,301),(1076,306),(235,175,141,227),3)
+    curved_route(d,nodes[0],nodes[1],(1129,270),(1145,253),(200,165,204,232),3)
+    curved_route(d,nodes[0],nodes[2],(1154,332),(1210,334),(163,166,198,222),3)
+    curved_route(d,nodes[1],nodes[3],(1238,230),(1272,245),(146,198,204,227),3)
+    curved_route(d,nodes[2],nodes[3],(1302,315),(1295,275),(165,187,210,208),3)
     # Tiny port markers convey routable edges without boxed cards.
     for i,(x,y) in enumerate(nodes):
         col=[(210,155,129),(173,140,191),(156,166,187),(116,193,191)][i]
-        d.ellipse((x-10,y-10,x+10,y+10),fill=(19,21,30,243),outline=(*col,174),width=2)
-        d.ellipse((x-3,y-3,x+3,y+3),fill=(*col,220))
+        d.ellipse((x-10,y-10,x+10,y+10),fill=(19,21,30,243),outline=(*col,227),width=3)
+        d.ellipse((x-4,y-4,x+4,y+4),fill=(*col,247))
         for angle in (0,PI):
             xx=x+16*math.cos(angle)
             yy=y+16*math.sin(angle)
@@ -184,11 +184,11 @@ def draw_orbits(layer, paths, phase=0.):
     colors=[(220,163,119),(172,142,193),(113,199,193)]
     for i,path in enumerate(paths):
         xy=[(cx+x*scale,cy-y*scale) for x,y in path]
-        ink_line(d,xy,(*colors[i],86),1)
+        ink_line(d,xy,(*colors[i],172),2)
         # Emphasize short local trajectories as an audio/physics signal continuation.
         j=int(phase/(2*PI)*len(xy))%len(xy)
         segment=[xy[(j+t)%len(xy)] for t in range(28)]
-        ink_line(d,segment,(*colors[i],197),2)
+        ink_line(d,segment,(*colors[i],245),3)
     d.ellipse((cx-3,cy-3,cx+3,cy+3),outline=(185,171,195,100),width=1)
     for i,path in enumerate(paths):
         j=int(phase/(2*PI)*len(path))%len(path)
@@ -196,25 +196,22 @@ def draw_orbits(layer, paths, phase=0.):
         glow_dot(layer,cx+x*scale,cy-y*scale,colors[i],3)
     # Minimal cursor-like orbital guide (not an app screenshot)
     d=ImageDraw.Draw(layer)
-    d.arc((cx-145,cy-145,cx+145,cy+145),225,302,fill=(127,158,176,55),width=1)
+    d.arc((cx-145,cy-145,cx+145,cy+145),225,302,fill=(127,158,176,105),width=2)
 
 def labels(layer):
     d=ImageDraw.Draw(layer)
-    fm=font("mono",14)
-    d.text((633,256),"01  /  ARRANGE",font=fm,fill=(194,160,143,170))
-    d.text((1091,209),"02  /  ROUTE",font=fm,fill=(164,147,177,174))
-    d.text((1380,104),"03  /  EVOLVE",font=fm,fill=(137,184,185,191))
-    d.text((670,446),"AUDIO  ·  MOTION  ·  SYSTEMS",font=font("mono",13),
-           fill=(165,153,169,145))
+    fm=font("mono",18)
+    d.text((633,246),"01  /  ARRANGE",font=fm,fill=(221,176,146,239))
+    d.text((1084,194),"02  /  ROUTE",font=fm,fill=(189,168,208,238))
+    d.text((1369,92),"03  /  EVOLVE",font=fm,fill=(159,216,217,240))
+    d.text((670,446),"AUDIO  /  MOTION  /  SYSTEMS",font=font("mono",15),
+           fill=(178,169,186,219))
 
 def typography(layer):
     d=ImageDraw.Draw(layer)
-    # Three diagonal strokes from the prior creator design guide, NOT a logo.
-    for i in range(3):
-        x=62+i*10
-        d.line((x,72,x+27,39),fill=(198,160,142,166),width=3)
-    d.text((111,42),"RECORDING ARTIST   /   MUSIC PRODUCER",
-           font=font("mono",16),fill=(201,189,207,235))
+    # Text-only eyebrow: no invented mark masquerading as the owner's logo.
+    d.text((84,45),"RECORDING ARTIST   /   MUSIC PRODUCER",
+           font=font("mono",18),fill=(216,202,222,244))
     d.text((78,101),"Sir Davi",font=font("head",99),fill=(*PALETTE["ink"],255))
     d.text((83,239),"Music, media, and systems.",font=font("body",33),
            fill=(235,225,233,255))

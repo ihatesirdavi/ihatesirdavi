@@ -8,6 +8,10 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class MusicHeroTests(unittest.TestCase):
+    def test_existing_ci_installs_renderer_dependency(self):
+        workflow=(ROOT/".github"/"workflows"/"validate.yml").read_text(encoding="utf-8")
+        self.assertIn("python -m pip install Pillow==11.1.0",workflow)
+        self.assertIn("python -m unittest discover -s tests -v",workflow)
     def test_readme_replaces_svg_with_existing_project_backed_banner(self):
         readme=(ROOT/"README.md").read_text(encoding="utf-8")
         self.assertIn('src="assets/hero-music-systems.gif"',readme)

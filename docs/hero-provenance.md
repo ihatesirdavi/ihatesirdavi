@@ -28,6 +28,11 @@ The first integrated candidate placed too much visual weight on its waveform whi
 - Corrects small metadata separators to system-font-safe punctuation. Motion remains finite and the original geometry/test foundations remain unchanged.
 
 **Observed QA at 800x235 (Windows 11, Pillow 11.1.0, half-size PNG, grayscale brightness >100):** routing ROI pixels improved 189 to 640, orbital ROI 107 to 373. Stage-label ROI at brightness >95 improved 2 to 88. Those are *render readability checks*, not proof of user aesthetic acceptance; perceptual judgment still requires owner review.
+## November 18 stage-overlap repair
+
+The former audio-stage waveform extended into multiple transition strands, the branching routing paths gathered too closely at their endpoints, and the orbital guide encroached on the last routing node. The source renderer now uses a shorter arrangement region, a compact three-strand transition, spaced upper and lower routing branches, and a smaller orbital field centered farther right. The routing output connects toward the orbit with one deliberate bridge; it does not draw across the trajectories.
+
+The new tests/test_hero_overlap.py regression renders separate transparent layer masks and checks their horizontal bounds and shared-ink pixels before compositing. This is a geometry regression check, not a substitute for owner visual review. The dimensions, source test stack, finite GIF behavior, music-first text and public/private source boundaries remain unchanged.
 ## Reproduce and evidence
 
     python scripts/render_music_hero.py

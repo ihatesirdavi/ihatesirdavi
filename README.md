@@ -3,7 +3,6 @@
   <p><strong>Recording artist and music producer. Creative technologist and systems designer.</strong></p>
   <p><sub>“I code sometimes…”</sub></p>
   <p>
-    <a href="#selected-music-and-media">Music &amp; media</a> ·
     <a href="#public-previews">Previews</a> ·
     <a href="#featured-public-work">Public work</a> ·
     <a href="#open-source">Open source</a> ·
@@ -20,17 +19,6 @@ That work led naturally into **systems architecture, interactive graphics, tools
 
 I work across FL Studio, Adobe creative applications, video and graphic production, software interfaces, integration, and experiments. Code is a useful instrument, but the primary question remains: **What should this do, and what makes the experience work?**
 
-## Selected music and media
-
-**The creative work comes first.** Music production, recording and multimedia are ongoing disciplines, not side notes to programming. Public credits and media are featured here only when their source and role can be checked.
-
-**[Saint Saiten / public producer catalog](https://traktrain.com/saintsaiten)**
-
-A publicly listed beat-production catalog under my production-credit alias, **Saint Saiten**. The producer page lists an instrumental; its type-beat title is a stylistic reference, **not** a claim of collaboration with the named artists.
-
-The link demonstrates a public production outlet. Song releases, music videos and specific performance credits need their own source and rights review before being presented as selected work. This profile does not copy music, artwork or third-party video assets.
-
-<sub>Evidence checked November 18, 2026. Public listing verified; featured-item owner review pending. [Source and credit verification notes](docs/music-portfolio-evidence.md).</sub>
 ## Music as systems thinking
 
 | Production discipline | How it carries into current work |
@@ -69,7 +57,6 @@ A narrow window into original, standalone functional and visual studies. Unrelea
 
 | Work | What it demonstrates | Current state |
 | :-- | :-- | :-- |
-| [**Saint Saiten / producer catalog**](https://traktrain.com/saintsaiten) | Publicly listed music production catalog under a producer-credit alias; [source notes](docs/music-portfolio-evidence.md) | Existing public listing; selected-work owner review pending |
 | [**SIGNAL-001 / Preview Lab**](https://ihatesirdavi.github.io/preview-lab/) | Original bounded interactive field, three visual modes, tested source and preview evidence | Public prototype; owner acceptance pending |
 | [**DYNAMICS-002 / Preview Lab**](https://ihatesirdavi.github.io/preview-lab/dynamics.html) | Three-body gravitational simulation, measured energy drift, native regression tests, bounded visuals | Public prototype; owner review pending |
 | [**GitHub profile source**](https://github.com/ihatesirdavi/ihatesirdavi) | Reproducible raster/motion design from real previews, Python validators, GitHub Actions, and documented lessons | Public source; new visual pending owner acceptance |

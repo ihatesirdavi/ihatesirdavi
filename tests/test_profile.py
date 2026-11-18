@@ -51,6 +51,17 @@ class ProfileValidationTests(unittest.TestCase):
         self.assertIn("preview-lab/main/docs/dynamics-still.png", content)
         self.assertIn("owner review pending", content.lower())
         self.assertNotIn("Lucky Number Media", content)
+    def test_unapproved_old_music_feature_is_absent(self):
+        readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        for forbidden in (
+            "traktrain.com/saintsaiten",
+            "Saint Saiten / public producer catalog",
+            "Saint Saiten / producer catalog",
+            "## Selected music and media",
+        ):
+            self.assertNotIn(forbidden, readme)
+        self.assertFalse((ROOT / "portfolio" / "public-music.json").exists())
+        self.assertFalse((ROOT / "docs" / "music-portfolio-evidence.md").exists())
     def test_real_preview_image_is_linked(self):
         content = (ROOT / "README.md").read_text(encoding="utf-8")
         self.assertIn("preview-lab/main/docs/preview-still.png", content)

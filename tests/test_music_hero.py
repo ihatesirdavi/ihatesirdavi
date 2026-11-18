@@ -62,6 +62,23 @@ class MusicHeroTests(unittest.TestCase):
         self.assertTrue(all(len(path)>20 for path in orbital_paths()))
         self.assertTrue(max(abs(y) for y in signal_samples(0.0))<=1.0)
 
+    def test_visual_story_survives_github_scale(self):
+        """Avoid a barely visible technical side when the banner is half-sized."""
+        from PIL import Image
+        with Image.open(ROOT/"assets"/"hero-music-systems.png") as im:
+            tiny=im.convert("RGB").resize((800,235),Image.Resampling.LANCZOS)
+            gray=tiny.convert("L")
+            def bright(box, threshold):
+                return sum(pixel>threshold for pixel in gray.crop(box).getdata())
+            # Half-scale equivalents of routing / dynamics / first stage label.
+            self.assertGreater(bright((520,112,678,178),100),570)
+            self.assertGreater(bright((660,70,800,195),100),330)
+            self.assertGreater(bright((310,122,416,140),95),70)
+
+    def test_does_not_invent_a_decorative_pseudo_logo(self):
+        renderer=(ROOT/"scripts"/"render_music_hero.py").read_text(encoding="utf-8")
+        self.assertNotIn("Three diagonal strokes from the prior creator design guide",renderer)
+        self.assertIn("RECORDING ARTIST",renderer)
     def test_background_grid_remains_visually_subordinate(self):
         from PIL import Image
         with Image.open(ROOT/"assets"/"hero-music-systems.png") as im:

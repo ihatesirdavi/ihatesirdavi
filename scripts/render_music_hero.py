@@ -111,18 +111,18 @@ def glow_dot(layer, x, y, color, radius=5):
 def draw_signal_flow(layer, phase=0.):
     """Arrangement lanes morph into one waveform and later into the routing graph."""
     d=ImageDraw.Draw(layer)
-    x0,x1=618,1045
+    x0,x1=618,981
     # Muted beat and measure grid, rather than screenshot panels.
-    for k in range(17):
+    for k in range(16):
         x=x0+k*24
         d.line((x,275,x,433),fill=(160,136,162,35 if k%4 else 70),width=1)
     for y in (296,335,375,412):
-        d.line((x0,y,1035,y),fill=(132,119,139,38),width=1)
+        d.line((x0,y,x1,y),fill=(132,119,139,38),width=1)
     # Piano-roll / arrangement blocks, logically tied to the waveform clock.
     for lane in range(3):
         for i in range(11):
             if (i*3+lane)%4 == 1: continue
-            x=627+i*34+lane*4
+            x=627+i*30+lane*4
             y=375+lane*17-(i%3)*4
             length=13+(i*7+lane*3)%20
             d.rounded_rectangle((x,y,x+length,y+5),radius=2,
@@ -130,22 +130,22 @@ def draw_signal_flow(layer, phase=0.):
     # A measured-looking waveform drawn explicitly from SYNTHETIC amplitudes.
     samples=signal_samples(phase)
     for i,v in enumerate(samples):
-        x=629+i*1.18
-        fade=(1-min(1,abs(x-833)/275))*.5+.5
+        x=629+i*.96
+        fade=(1-min(1,abs(x-803)/210))*.5+.5
         amp=v*(15+35*fade)
         color=(232,167,128,int(158+90*fade))
         d.line((x,335-abs(amp),x,335+abs(amp)),fill=color,width=1)
     # Flow smoothly leaves the track view, leading into nodes with no rectangle seam.
-    for strand in range(5):
+    for strand in range(3):
         pts=[]
-        for x in range(882,1151,3):
-            u=(x-882)/268
-            cy=335-53*u+23*math.sin(u*PI)
-            amp=(1-u)**1.5*(4+strand*4)
-            y=cy+amp*math.sin((x-882)/37+phase*.7+strand*.52)
+        for x in range(974,1101,3):
+            u=(x-974)/126
+            cy=335-34*u+9*math.sin(u*PI)
+            amp=(1-u)**1.5*(3.5+strand*2.0)
+            y=cy+amp*math.sin((x-974)/37+phase*.7+strand*.52)
             pts.append((x,y))
         ink_line(d,pts,(213,152+strand*5,144+strand*7,108+strand*23),2)
-    return (1128, 284)
+    return (1100, 301)
 
 def curved_route(d, p1, p2, c1, c2, color, width=2):
     pts=[]
@@ -160,13 +160,15 @@ def curved_route(d, p1, p2, c1, c2, color, width=2):
 def draw_routing(layer):
     """Branching IO/processing graph is the same continuous signal, not a UI mock."""
     d=ImageDraw.Draw(layer)
-    nodes=[(1102,303),(1184,249),(1262,315),(1334,260)]
-    curved_route(d,(1040,305),nodes[0],(1077,301),(1076,306),(235,175,141,227),3)
-    curved_route(d,nodes[0],nodes[1],(1129,270),(1145,253),(200,165,204,232),3)
-    curved_route(d,nodes[0],nodes[2],(1154,332),(1210,334),(163,166,198,222),3)
-    curved_route(d,nodes[1],nodes[3],(1238,230),(1272,245),(146,198,204,227),3)
-    curved_route(d,nodes[2],nodes[3],(1302,315),(1295,275),(165,187,210,208),3)
-    # Tiny port markers convey routable edges without boxed cards.
+    nodes=[(1114,301),(1200,228),(1200,349),(1320,280)]
+    curved_route(d,(1098,301),nodes[0],(1102,301),(1108,301),(235,175,141,227),4)
+    curved_route(d,nodes[0],nodes[1],(1146,262),(1163,230),(200,165,204,232),4)
+    curved_route(d,nodes[0],nodes[2],(1147,338),(1165,348),(163,166,198,222),4)
+    curved_route(d,nodes[1],nodes[3],(1254,207),(1284,253),(146,198,204,227),4)
+    curved_route(d,nodes[2],nodes[3],(1255,369),(1286,296),(165,187,210,208),4)
+    # One intentional handoff from the final route into the dynamic field.
+    # The line stops before the calculated orbits instead of drawing over them.
+    curved_route(d,nodes[3],(1381,271),(1342,279),(1362,272),(132,194,196,172),2)    # Tiny port markers convey routable edges without boxed cards.
     for i,(x,y) in enumerate(nodes):
         col=[(210,155,129),(173,140,191),(156,166,187),(116,193,191)][i]
         d.ellipse((x-10,y-10,x+10,y+10),fill=(19,21,30,243),outline=(*col,227),width=3)
@@ -180,23 +182,22 @@ def draw_routing(layer):
 def draw_orbits(layer, paths, phase=0.):
     """Real generated three-body trajectories blend into the route's last node."""
     d=ImageDraw.Draw(layer)
-    cx,cy,scale=1440,265,105
+    cx,cy,scale=1486,265,86
     colors=[(220,163,119),(172,142,193),(113,199,193)]
     for i,path in enumerate(paths):
         xy=[(cx+x*scale,cy-y*scale) for x,y in path]
-        ink_line(d,xy,(*colors[i],172),2)
+        ink_line(d,xy,(*colors[i],194),3)
         # Emphasize short local trajectories as an audio/physics signal continuation.
         j=int(phase/(2*PI)*len(xy))%len(xy)
         segment=[xy[(j+t)%len(xy)] for t in range(28)]
-        ink_line(d,segment,(*colors[i],245),3)
+        ink_line(d,segment,(*colors[i],248),4)
     d.ellipse((cx-3,cy-3,cx+3,cy+3),outline=(185,171,195,100),width=1)
     for i,path in enumerate(paths):
         j=int(phase/(2*PI)*len(path))%len(path)
         x,y=path[j]
         glow_dot(layer,cx+x*scale,cy-y*scale,colors[i],3)
-    # Minimal cursor-like orbital guide (not an app screenshot)
-    d=ImageDraw.Draw(layer)
-    d.arc((cx-145,cy-145,cx+145,cy+145),225,302,fill=(127,158,176,105),width=2)
+    # The trajectories themselves provide the orbital structure; an
+    # extra oversized guide arc previously crossed the routing region.
 
 def labels(layer):
     d=ImageDraw.Draw(layer)

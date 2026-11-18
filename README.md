@@ -1,6 +1,6 @@
 <div align="center">
-  <img src="assets/hero.svg" width="100%" alt="Sir Davi banner: function, design, systems, media, and subtle finite animation." />
-  <p><strong>Function, design, systems and creative technology.</strong></p>
+  <a href="assets/hero-music-systems.png"><img src="assets/hero-music-systems.gif" width="100%" alt="Sir Davi: recording artist, music producer, creative technologist. A music-to-systems banner composed using authentic SIGNAL-001 and DYNAMICS-002 visual captures; limited-duration signal animation." /></a>
+  <p><strong>Recording artist and music producer. Creative technologist and systems designer.</strong></p>
   <p><sub>“I code sometimes…”</sub></p>
   <p>
     <a href="#public-previews">Previews</a> ·
@@ -13,12 +13,23 @@
 
 ## About
 
-I'm **Sir Davi**, a multidisciplinary creator working across functional design, interactive systems, research, and independent media. The projects come first: what they do, how people use them, and how they feel.
+I'm **Sir Davi**, a recording artist, music producer, writer, and multimedia creator. Music production is the foundation of how I build things, not a past life I abandoned to become a programmer. In recording and production, the job is to turn an idea into a complete, coherent experience: writing, arrangement, vocal performance, recording, editing, mixing, visuals, and release preparation.
 
-My background includes music production, writing and recording, video editing, and visual design. That creative work informs how I approach engineering: start with the whole system, investigate the mechanics, build a working example, and validate what it really does.
+That work led naturally into **systems architecture, interactive graphics, tools, simulations, and agent-assisted research**. A good production session and a well-designed technical system have more in common than their interfaces suggest. Both depend on coordinated components, timing, signal flow, iterative listening or testing, and a result that works as a whole.
 
-I'm particularly interested in the boundary between low-level systems, AI, graphics, real-time interfaces, and the tools people actually use.
+I work across FL Studio, Adobe creative applications, video and graphic production, software interfaces, integration, and experiments. Code is a useful instrument, but the primary question remains: **What should this do, and what makes the experience work?**
 
+## Music as systems thinking
+
+| Production discipline | How it carries into current work |
+| :-- | :-- |
+| **Songwriting and arrangement** | Architecture: organizing components into coherent structures, sequences, and experiences |
+| **Signal routing, buses, and effects** | Interfaces and integrations: understanding inputs, transformations, dependencies, and outputs |
+| **Timing, automation, and performance** | Animation, interactive controls, synchronized events, and real-time feedback |
+| **Mixing and critical listening** | Debugging and validation: isolate a problem, compare revisions, improve the entire result |
+| **Final mix, video edit, and delivery** | Packaging and release workflows: reproducible outputs, quality checks, and explicit acceptance |
+
+The public demonstrations below show small pieces of that transition. Their codenames protect unreleased work and their tests describe what is actually verified.
 ## Where I focus
 
 | Area | What I'm exploring |
@@ -48,7 +59,7 @@ A narrow window into original, standalone functional and visual studies. Unrelea
 | :-- | :-- | :-- |
 | [**SIGNAL-001 / Preview Lab**](https://ihatesirdavi.github.io/preview-lab/) | Original bounded interactive field, three visual modes, tested source and preview evidence | Public prototype; owner acceptance pending |
 | [**DYNAMICS-002 / Preview Lab**](https://ihatesirdavi.github.io/preview-lab/dynamics.html) | Three-body gravitational simulation, measured energy drift, native regression tests, bounded visuals | Public prototype; owner review pending |
-| [**GitHub profile source**](https://github.com/ihatesirdavi/ihatesirdavi) | Editable SVG design, Python validators, GitHub Actions, and documented lessons | Public and tested |
+| [**GitHub profile source**](https://github.com/ihatesirdavi/ihatesirdavi) | Reproducible raster/motion design from real previews, Python validators, GitHub Actions, and documented lessons | Public source; new visual pending owner acceptance |
 | [**AcerolaFX contribution**](https://github.com/GarrettGunnell/AcerolaFX/pull/64) | Reproducing broken links, checking evidence, writing a minimal upstream patch | PR #64 submitted for review |
 | [**GDScript Toolkit contribution**](https://github.com/Scony/godot-gdscript-toolkit/pull/435) | Python formatter bug fix, regression tests, and semantic checks | PR #435 open; CI approval pending |
 | [**VS Code extensions workspace**](https://github.com/ihatesirdavi/vscode-extensions) | Shared extension workspace and provisional visual branding | Public source; release not verified |

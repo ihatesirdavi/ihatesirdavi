@@ -56,11 +56,12 @@ class ProfileValidationTests(unittest.TestCase):
         self.assertIn("preview-lab/main/docs/preview-still.png", content)
 
     def test_banner_tagline_animation_is_bounded(self):
-        banner = (ROOT / "assets" / "hero.svg").read_text(encoding="utf-8")
-        self.assertIn("\u201cI code sometimes\u2026\u201d", banner)
-        self.assertNotIn("I CODE SOMETIMES...", banner)
-        self.assertIn('font-size="16"', banner)
-        self.assertNotIn('repeatCount="indefinite"', banner)
+        banner = (ROOT / "assets" / "hero-music-systems.gif").read_bytes()
+        self.assertTrue(banner.startswith(b"GIF89a"))
+        self.assertLess(len(banner), 9_000_000)
+        readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        self.assertIn("\u201cI code sometimes\u2026\u201d", readme)
+        self.assertIn("assets/hero-music-systems.gif", readme)
 
 if __name__ == "__main__":
     unittest.main()

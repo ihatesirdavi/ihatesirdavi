@@ -81,4 +81,4 @@ I care about clean boundaries, honest release status, reusable tools, and unders
 
 ---
 
-<sub>**Build and provenance:** Python 3.11, Git/GitHub CLI, GitHub Actions, SVG/XML checks; seven profile tests passed. Agent-assisted work under owner-directed human oversight, with factual claims checked against source and execution receipts; independent human code review and upstream acceptance are not assumed. [Full specs, test stack and evidence](docs/contribution-evidence.md).</sub>
+<sub>**Build and provenance:** Python 3.11, Git/GitHub CLI, GitHub Actions, SVG/XML checks; seven profile tests and CI passed. I personally review and double-check the work and its factual claims, with agents assisting implementation, review, and source verification. External maintainer acceptance remains separate. [Specs, test stack, and evidence](docs/contribution-evidence.md).</sub>

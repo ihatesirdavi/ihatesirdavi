@@ -4,9 +4,9 @@
 
 ## Attribution, oversight, and factual checks
 
-- **Agent assistance:** software agents supported research, drafting, code changes, testing, and documentation. This is disclosed unobtrusively in the footer of a contribution rather than presented as its main achievement.
-- **Human oversight:** the repository owner defines goals, scope, and permission boundaries, and retains final review and acceptance authority. This records human direction, **not** an unverified claim that every source line received independent human review.
-- **Fact-checking:** original repository files, observed command output, issue discussions, checks, and GitHub state were consulted. Automated tests and agent review are not substitutes for owner acceptance, upstream maintainer approval, or native-runtime verification.
+- **Agent assistance:** software agents supported research, drafting, code changes, testing, review, and documentation. The contribution footer records this without making it the headline.
+- **Human review and oversight:** the owner personally reviews and double-checks the work, claims, and evidence, while retaining direction and acceptance authority. Agents may assist this review. Owner review is human review; it is distinct from an external maintainer review or a claim that every line received a separate third-party audit.
+- **Fact-checking:** the owner and assisting agents cross-check claims against original files, observed commands, issue discussions, and GitHub state. Tests supply additional evidence, but do not replace owner judgment, upstream maintainer approval, or native-runtime verification.
 - **Evidence language:** proposed, locally tested, CI-verified, merged, and accepted are distinct states. Unrun checks remain marked NOT_RUN.
 
 ## Tested environment and public receipts
@@ -23,7 +23,7 @@
 
 Use a short, project-appropriate footer after the technical summary:
 
-> **Specs and evidence:** runtime/tool versions; exact tests and observed results; explicitly unrun checks. **Provenance:** agent-assisted preparation under human-directed oversight, with claims checked against original source and test or CI receipts. Owner and maintainer acceptance are separate.
+> **Specs and evidence:** runtime/tool versions; exact tests and observed results; explicitly unrun checks. **Provenance:** owner-reviewed and fact-checked with agent assistance in implementation and review. Independent maintainer approval is a separate gate.
 
 List exact receipts whenever available. Do not use a previous CI run as proof of a new commit. Do not equate the existence of a PR, a successful mock, or an available runtime with merged, deployed, or accepted behavior.
 

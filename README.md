@@ -62,7 +62,7 @@ A narrow window into original, standalone functional and visual studies. Unrelea
 | [**GitHub profile source**](https://github.com/ihatesirdavi/ihatesirdavi) | Reproducible raster/motion design from real previews, Python validators, GitHub Actions, and documented lessons | Public source; new visual pending owner acceptance |
 | [**AcerolaFX contribution**](https://github.com/GarrettGunnell/AcerolaFX/pull/64) | Reproducing broken links, checking evidence, writing a minimal upstream patch | PR #64 submitted for review |
 | [**GDScript Toolkit contribution**](https://github.com/Scony/godot-gdscript-toolkit/pull/435) | Python formatter bug fix, regression tests, and semantic checks | PR #435 open; CI approval pending |
-| [**VS Code extensions workspace**](https://github.com/ihatesirdavi/vscode-extensions) | Shared extension workspace and provisional visual branding | Public source; release not verified |
+| [**Sunday Parcel**](https://github.com/ihatesirdavi/sunday-parcel) | Read-only VS Code extension source workbench for local development receipts | Source only; no VSIX or release published |
 
 Projects in transition are represented by owner-cleared public previews under codenames only. Private names, source and packaging status remain withheld until the owner approves release.
 

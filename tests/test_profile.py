@@ -66,6 +66,15 @@ class ProfileValidationTests(unittest.TestCase):
         content = (ROOT / "README.md").read_text(encoding="utf-8")
         self.assertIn("preview-lab/main/docs/preview-still.png", content)
 
+    def test_current_extension_source_is_linked_without_release_claim(self):
+        content = (ROOT / "README.md").read_text(encoding="utf-8")
+        self.assertIn(
+            "[**Sunday Parcel**](https://github.com/ihatesirdavi/sunday-parcel)",
+            content,
+        )
+        self.assertNotIn("https://github.com/ihatesirdavi/vscode-extensions", content)
+        self.assertIn("Source only; no VSIX or release published", content)
+
     def test_banner_tagline_animation_is_bounded(self):
         banner = (ROOT / "assets" / "hero-music-systems.gif").read_bytes()
         self.assertTrue(banner.startswith(b"GIF89a"))

@@ -75,6 +75,26 @@ class ProfileValidationTests(unittest.TestCase):
         self.assertNotIn("https://github.com/ihatesirdavi/vscode-extensions", content)
         self.assertIn("Source only; no VSIX or release published", content)
 
+    def test_local_automation_is_primary_profile_feature(self):
+        readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        self.assertIn('href="#local-automation"', readme)
+        self.assertIn("## Local automation", readme)
+        self.assertIn(
+            "[**Windows publishing audit**](docs/local-automation.md)", readme
+        )
+        self.assertLess(
+            readme.index("## Local automation"), readme.index("## Public previews")
+        )
+        self.assertIn("scripts/local_publishing_audit.py", readme)
+        self.assertIn("local JSON receipts", readme)
+
+    def test_local_automation_documentation_has_distinct_execution_and_gates(self):
+        doc = (ROOT / "docs" / "local-automation.md").read_text(encoding="utf-8")
+        self.assertIn("Windows Task Scheduler", doc)
+        self.assertIn("not ChatGPT scheduled tasks", doc)
+        self.assertIn("not GitHub Actions", doc)
+        self.assertIn("read-only", doc)
+        self.assertIn("owner approval", doc)
     def test_banner_tagline_animation_is_bounded(self):
         banner = (ROOT / "assets" / "hero-music-systems.gif").read_bytes()
         self.assertTrue(banner.startswith(b"GIF89a"))

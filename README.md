@@ -3,6 +3,7 @@
   <p><strong>Recording artist and music producer. Creative technologist and systems designer.</strong></p>
   <p><sub>“I code sometimes…”</sub></p>
   <p>
+    <a href="#local-automation">Automation</a> &middot;
     <a href="#public-previews">Previews</a> ·
     <a href="#featured-public-work">Public work</a> ·
     <a href="#open-source">Open source</a> ·
@@ -34,11 +35,21 @@ The public demonstrations below show small pieces of that transition. Their code
 
 | Area | What I'm exploring |
 | :-- | :-- |
+| **Local automation** | Windows-native scheduling, headless validation, monitoring, evidence receipts, controlled delivery |
 | **Software & systems** | CLI tooling, integrations, desktop/web applications, reliable test and release workflows |
 | **Graphics & interactivity** | Shaders, simulation, game technology, real-time rendering, interface animation |
 | **Agents & research** | Model tooling, agent workflows, repeatable experiments and applied systems research |
 | **Media & production** | Rap/hip-hop, recording, video production, editing, visual storytelling, creative tooling |
 
+## Local automation
+
+Automation is a core part of my systems work: **tasks run on my own Windows workstation**, with reproducible inputs, bounded execution, visible test evidence, and decisions kept separate from execution.
+
+**Inputs** → **Headless local checks** → **JSON evidence** → **Owner review**
+
+**[Windows publishing audit](docs/local-automation.md)** is a working example. It validates public profile assets, checks GitHub repository links, reads known upstream PR states, and saves auditable results locally. The November 20, 2026 Windows run verified **5 public repositories and 3 pull requests**, with **8 dedicated tests passing**. [Source](scripts/local_publishing_audit.py) | [Tests](tests/test_local_publishing_audit.py).
+
+The wider direction includes local task scheduling, testing, media-tool orchestration, and recoverable workflows. Each project keeps its own evidence and release authority. **Local automation is not ChatGPT scheduled tasks or GitHub Actions.** Cloud CI remains a separate publication gate.
 ## Public previews
 
 A narrow window into original, standalone functional and visual studies. Unreleased products are represented by public codenames only, without exposing their private identity, source, or release mapping.
@@ -57,6 +68,7 @@ A narrow window into original, standalone functional and visual studies. Unrelea
 
 | Work | What it demonstrates | Current state |
 | :-- | :-- | :-- |
+| [**Windows publishing audit**](docs/local-automation.md) | Native Windows scheduling, headless Python checks, read-only GitHub inspection, local JSON receipts | Scheduled test passed; publishing requires owner approval |
 | [**SIGNAL-001 / Preview Lab**](https://ihatesirdavi.github.io/preview-lab/) | Original bounded interactive field, three visual modes, tested source and preview evidence | Public prototype; owner acceptance pending |
 | [**DYNAMICS-002 / Preview Lab**](https://ihatesirdavi.github.io/preview-lab/dynamics.html) | Three-body gravitational simulation, measured energy drift, native regression tests, bounded visuals | Public prototype; owner review pending |
 | [**GitHub profile source**](https://github.com/ihatesirdavi/ihatesirdavi) | Reproducible raster/motion design from real previews, Python validators, GitHub Actions, and documented lessons | Public source; new visual pending owner acceptance |
@@ -100,6 +112,7 @@ A submitted pull request is not the same as a merged contribution.
 | [**02 · Upstream contribution**](docs/lessons/02-upstream-contribution.md) | Redirects, minimal diffs, branch hygiene | Explain the issue and inspect the PR |
 | [**03 · Public activity graphic**](docs/lessons/03-public-activity.md) | Python, dates, APIs, XML, regression testing | Change the time window and test the results |
 | [**04 - GDScript formatter bug**](docs/lessons/04-gdscript-formatter.md) | Python, syntax trees, regression tests, and AST safety | Reproduce 3 failures and verify the patch |
+| [**05 - Local automation**](docs/local-automation.md) | Windows scheduling, headless Python, JSON evidence, failure classification | Run a local audit and compare its immutable receipt |
 
 ## Working method
 

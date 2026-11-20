@@ -17,3 +17,7 @@ jobs:
       - run: python -m pip install Pillow==11.1.0
       - run: python -m unittest discover -s tests -v
       - run: python scripts/validate_profile.py
+      - name: Check public GitHub repository references
+        env:
+          GH_PUBLIC_LINKS_TOKEN: ${{ github.token }}
+        run: python scripts/validate_repo_references.py

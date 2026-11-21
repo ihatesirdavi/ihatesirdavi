@@ -21,6 +21,7 @@ from urllib.parse import quote
 from urllib.request import Request, urlopen
 
 from validate_profile import validate_profile
+from research_public_sources import run_optional_discovery
 from validate_repo_references import (
     collect_references,
     fetch_github_repository,
@@ -190,6 +191,13 @@ def main() -> int:
     result = audit(
         args.root, fetch_github_repository, fetch_public_pull_request, validate_profile,
     )
+    # Optional private source discovery reuses THIS exact local task/receipt.
+    # Candidate URLs are not live verified or authorization for engagement.
+    result["research_sources"] = run_optional_discovery(
+        args.output_dir, result["checked_at_utc"]
+    )
+    if result["research_sources"]["status"] == "UNVERIFIED" and result["status"] == "PASS":
+        result["status"] = "UNVERIFIED"
     archive, _ = write_receipt(args.output_dir, result)
     print("LOCAL_AUDIT_STATUS=" + result["status"])
     print("LOCAL_AUDIT_RECEIPT=" + str(archive))

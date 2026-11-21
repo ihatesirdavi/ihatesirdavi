@@ -1,8 +1,28 @@
 # Local automation: measured work, not a platform badge
 
-This project showcases local automation executed by the owner-controlled Windows workstation. It is **not ChatGPT scheduled tasks** and **not GitHub Actions**. Cloud-hosted validation is useful for a separate release gate, but it cannot prove that a Windows task executed locally.
+This project showcases **live, locally resident Windows automation** executed on the owner-controlled workstation. It is not ChatGPT scheduled tasks and not GitHub Actions. Cloud CI and past scheduled runs are separate evidence from the currently installed desktop process.
 
-## How the current example works
+## Current architecture: Source Atlas, a live local agent (November 21, 2026)
+
+[Source Atlas](../desktop/SourceAtlas/) is a native Windows desktop application built on the installed .NET Windows Desktop runtime. It is a **session-resident agent**, not a Windows scheduled task, ChatGPT task, duplicate service, or web server.
+
+**Local lifecycle**
+
+1. A user-scoped Windows Startup shortcut launches the installed application **hidden in the system tray** at sign-in. It does not wake the computer, sign in automatically, or run while the owner is logged out.
+2. The application watches 11 explicitly configured local research/documentation roots. File changes are coalesced and can trigger the original read-only Python audit. A bounded 15-minute in-process check also refreshes selected public GitHub/profile information. An owner may pause/resume or initiate a check from the tray.
+3. The existing audit and discovery scripts produce timestamped, immutable JSON receipts, a latest.json pointer, and a local live-state heartbeat. The program checks installed script hashes before executing. Private note paths and raw note bodies stay out of public source artifacts.
+4. The native viewer displays overview, research sources, dated GitHub snapshots, one-time engagement receipts, and evidence checksums. Opening its desktop shortcut reveals the already-running window on the designated 40-inch workspace screen instead of starting a second agent. It reuses the existing physical-monitor identity resolver and per-monitor DPI.
+5. GitHub engagement remains review-gated: **no automated starring, following, forking, reacting, merges, releases, or publications**. Live checks cover explicitly tracked public profile repository references and PRs. The broader third-party GitHub validation and U006 social actions are separate dated snapshots.
+
+**Native test boundary.** On November 21, an installed live application was verified running from the actual Windows Startup shortcut. The local monitor observed 11 roots, returned PASS on startup, detected a disposable source-file change, rechecked, and returned PASS again with 1,115 normalized references. The disposable file was removed. The viewer survived a normal native close-to-tray operation; launching again reopened the same process on the 40-inch TCL. A dated screenshot and evidence SHA-256 were retained only on the owner workstation. The research dataset included 192 third-party GitHub repository identities; 186 were active **when checked in the prior November 20 snapshot**, not reverified every 15 minutes.
+
+**Scheduler handover.** The previous GitHub-Publishing-Local-Audit Windows Task Scheduler entry is **Disabled**, not deleted. Its XML backup and original dated acceptance receipts remain preserved. The live application is the single active owner of this loop. Native sign-out/reboot login-survival testing is **NOT_RUN**; successful launch of the Startup shortcut establishes current-session behavior only. Owner visual/release acceptance is pending.
+
+**Flow:** approved research files → Source Atlas file watchers and bounded public checks → existing Python audit → private immutable receipts → native searchable viewer and owner review.
+
+## Historical scheduled audit pipeline (November 20, 2026)
+
+### Components and execution model
 
 1. **Input:** profile README and supporting public docs, the known public GitHub repositories, and three explicitly named upstream/profile pull requests.
 2. **Execution:** Python 3.11 from the Windows workstation, with GitHub public read-only REST requests and local asset validation. No agents, model endpoint, background web server, or cloud runner required.

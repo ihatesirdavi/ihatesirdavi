@@ -11,6 +11,8 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
 from local_publishing_audit import audit, write_receipt
+import local_publishing_audit as audit_module
+from unittest.mock import patch
 
 
 class LocalPublishingAuditTests(unittest.TestCase):
@@ -108,6 +110,38 @@ class LocalPublishingAuditTests(unittest.TestCase):
         with self.assertRaises(FileExistsError):
             write_receipt(output, result)
         self.assertEqual(1, len(list(output.glob("audit-*.json"))))
+
+
+
+    def test_main_reuses_one_receipt_with_private_source_discovery_summary(self):
+        report = self.run_check()
+        out = Path(self.temp.name) / "native-audit"
+        with patch.object(audit_module, "audit", return_value=report):
+            with patch.object(audit_module, "run_optional_discovery",
+                              return_value={"status": "DISCOVERED_NOT_LIVE_VERIFIED",
+                                            "candidate_count": 3}):
+                with patch.object(sys, "argv", ["audit", "--root", str(self.root),
+                                                 "--output-dir", str(out)]):
+                    self.assertEqual(0, audit_module.main())
+        import json
+        written = json.loads((out / "latest.json").read_text(encoding="utf-8"))
+        self.assertEqual(3, written["research_sources"]["candidate_count"])
+        self.assertEqual("PASS", written["status"])
+        self.assertFalse(written["changes_published"])
+
+    def test_source_config_failure_produces_unverified_not_false_pass(self):
+        report = self.run_check()
+        out = Path(self.temp.name) / "native-unverified"
+        with patch.object(audit_module, "audit", return_value=report):
+            with patch.object(audit_module, "run_optional_discovery",
+                              return_value={"status": "UNVERIFIED", "error_type": "ValueError"}):
+                with patch.object(sys, "argv", ["audit", "--root", str(self.root),
+                                                 "--output-dir", str(out)]):
+                    self.assertEqual(2, audit_module.main())
+        import json
+        written = json.loads((out / "latest.json").read_text(encoding="utf-8"))
+        self.assertEqual("UNVERIFIED", written["status"])
+        self.assertEqual("ValueError", written["research_sources"]["error_type"])
 
 
 if __name__ == "__main__":

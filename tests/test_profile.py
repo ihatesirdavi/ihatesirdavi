@@ -80,13 +80,15 @@ class ProfileValidationTests(unittest.TestCase):
         self.assertIn('href="#local-automation"', readme)
         self.assertIn("## Local automation", readme)
         self.assertIn(
-            "[**Windows publishing audit**](docs/local-automation.md)", readme
+            "**[Source Atlas live research and publishing](docs/local-automation.md)**", readme
         )
         self.assertLess(
             readme.index("## Local automation"), readme.index("## Public previews")
         )
         self.assertIn("scripts/local_publishing_audit.py", readme)
-        self.assertIn("local JSON receipts", readme)
+        self.assertIn("records immutable evidence", readme)
+        self.assertIn("desktop/SourceAtlas/README.md", readme)
+        self.assertIn("192 GitHub repositories appear in a separate saved verification snapshot", readme)
 
     def test_local_automation_documentation_has_distinct_execution_and_gates(self):
         doc = (ROOT / "docs" / "local-automation.md").read_text(encoding="utf-8")

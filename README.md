@@ -3,6 +3,7 @@
   <p><strong>Recording artist and music producer. Creative technologist and systems designer.</strong></p>
   <p><sub>“I code sometimes…”</sub></p>
   <p>
+    <a href="#local-automation">Automation</a> &middot;
     <a href="#public-previews">Previews</a> ·
     <a href="#featured-public-work">Public work</a> ·
     <a href="#open-source">Open source</a> ·
@@ -34,11 +35,21 @@ The public demonstrations below show small pieces of that transition. Their code
 
 | Area | What I'm exploring |
 | :-- | :-- |
+| **Local automation** | Windows-native live monitoring, research discovery, headless validation, evidence receipts, controlled delivery |
 | **Software & systems** | CLI tooling, integrations, desktop/web applications, reliable test and release workflows |
 | **Graphics & interactivity** | Shaders, simulation, game technology, real-time rendering, interface animation |
 | **Agents & research** | Model tooling, agent workflows, repeatable experiments and applied systems research |
 | **Media & production** | Rap/hip-hop, recording, video production, editing, visual storytelling, creative tooling |
 
+## Local automation
+
+Automation is a core part of my systems work: **tasks run on my own Windows workstation**, with reproducible inputs, bounded execution, visible test evidence, and decisions kept separate from execution.
+
+**Approved sources** → **Resident Windows agent** → **Read-only public checks** → **Local evidence** → **Owner review**
+
+**[Source Atlas live research and publishing](docs/local-automation.md)** is a native Windows agent running in the local desktop session. It watches 11 approved research areas, validates public references and selected GitHub metadata, records immutable evidence, and provides a searchable local interface. On November 21, a native event-triggered test refreshed 1,115 public-source references; 192 GitHub repositories appear in a separate saved verification snapshot. Source and test evidence are not publication approval. [Source Atlas public repository](https://github.com/ihatesirdavi/source-atlas) | [Offline demo screenshot](https://github.com/ihatesirdavi/source-atlas/blob/main/docs/screenshots/offline-overview.png) | [Local audit](scripts/local_publishing_audit.py) | [Source tests](tests/test_research_public_sources.py).
+
+The wider direction includes live local monitoring, bounded testing, media-tool orchestration, and recoverable workflows. Each project keeps its own evidence and release authority. **Local automation is not ChatGPT scheduled tasks or GitHub Actions.** Cloud CI remains a separate publication gate.
 ## Public previews
 
 A narrow window into original, standalone functional and visual studies. Unreleased products are represented by public codenames only, without exposing their private identity, source, or release mapping.
@@ -57,12 +68,13 @@ A narrow window into original, standalone functional and visual studies. Unrelea
 
 | Work | What it demonstrates | Current state |
 | :-- | :-- | :-- |
+| [**Source Atlas live agent**](https://github.com/ihatesirdavi/source-atlas) | Native resident Windows research watcher, read-only GitHub checks, searchable source catalog, local evidence | Native local E2E passed; owner acceptance pending |
 | [**SIGNAL-001 / Preview Lab**](https://ihatesirdavi.github.io/preview-lab/) | Original bounded interactive field, three visual modes, tested source and preview evidence | Public prototype; owner acceptance pending |
 | [**DYNAMICS-002 / Preview Lab**](https://ihatesirdavi.github.io/preview-lab/dynamics.html) | Three-body gravitational simulation, measured energy drift, native regression tests, bounded visuals | Public prototype; owner review pending |
 | [**GitHub profile source**](https://github.com/ihatesirdavi/ihatesirdavi) | Reproducible raster/motion design from real previews, Python validators, GitHub Actions, and documented lessons | Public source; new visual pending owner acceptance |
 | [**AcerolaFX contribution**](https://github.com/GarrettGunnell/AcerolaFX/pull/64) | Reproducing broken links, checking evidence, writing a minimal upstream patch | PR #64 submitted for review |
 | [**GDScript Toolkit contribution**](https://github.com/Scony/godot-gdscript-toolkit/pull/435) | Python formatter bug fix, regression tests, and semantic checks | PR #435 open; CI approval pending |
-| [**VS Code extensions workspace**](https://github.com/ihatesirdavi/vscode-extensions) | Shared extension workspace and provisional visual branding | Public source; release not verified |
+| [**Sunday Parcel**](https://github.com/ihatesirdavi/sunday-parcel) | Read-only VS Code extension source workbench for local development receipts | Source only; no VSIX or release published |
 
 Projects in transition are represented by owner-cleared public previews under codenames only. Private names, source and packaging status remain withheld until the owner approves release.
 
@@ -100,6 +112,7 @@ A submitted pull request is not the same as a merged contribution.
 | [**02 · Upstream contribution**](docs/lessons/02-upstream-contribution.md) | Redirects, minimal diffs, branch hygiene | Explain the issue and inspect the PR |
 | [**03 · Public activity graphic**](docs/lessons/03-public-activity.md) | Python, dates, APIs, XML, regression testing | Change the time window and test the results |
 | [**04 - GDScript formatter bug**](docs/lessons/04-gdscript-formatter.md) | Python, syntax trees, regression tests, and AST safety | Reproduce 3 failures and verify the patch |
+| [**05 - Live local automation**](docs/local-automation.md) | Source Atlas, native resident monitoring, evidence receipts, approval boundaries | Follow a local research event through inspection, validation, and owner review |
 
 ## Working method
 

@@ -22,6 +22,10 @@ jobs:
         run: python scripts/render_public_activity.py --username ihatesirdavi --days 28 --output assets/public-activity.svg
       - name: Validate profile
         run: python scripts/validate_profile.py
+      - name: Check public GitHub repository references
+        env:
+          GH_PUBLIC_LINKS_TOKEN: ${{ github.token }}
+        run: python scripts/validate_repo_references.py
       - name: Commit refreshed chart if changed
         run: |
           if ! git diff --quiet -- assets/public-activity.svg; then

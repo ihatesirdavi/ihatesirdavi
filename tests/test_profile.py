@@ -87,7 +87,7 @@ class ProfileValidationTests(unittest.TestCase):
         )
         self.assertIn("scripts/local_publishing_audit.py", readme)
         self.assertIn("records immutable evidence", readme)
-        self.assertIn("desktop/SourceAtlas/README.md", readme)
+        self.assertIn("https://github.com/ihatesirdavi/source-atlas", readme)
         self.assertIn("192 GitHub repositories appear in a separate saved verification snapshot", readme)
 
     def test_local_automation_documentation_has_distinct_execution_and_gates(self):

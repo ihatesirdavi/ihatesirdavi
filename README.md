@@ -47,7 +47,7 @@ Automation is a core part of my systems work: **tasks run on my own Windows work
 
 **Approved sources** → **Resident Windows agent** → **Read-only public checks** → **Local evidence** → **Owner review**
 
-**[Source Atlas live research and publishing](docs/local-automation.md)** is a native Windows agent running in the local desktop session. It watches 11 approved research areas, validates public references and selected GitHub metadata, records immutable evidence, and provides a searchable local interface. On November 21, a native event-triggered test refreshed 1,115 public-source references; 192 GitHub repositories appear in a separate saved verification snapshot. Source and test evidence are not publication approval. [Native viewer](desktop/SourceAtlas/README.md) | [Local audit](scripts/local_publishing_audit.py) | [Source tests](tests/test_research_public_sources.py).
+**[Source Atlas live research and publishing](docs/local-automation.md)** is a native Windows agent running in the local desktop session. It watches 11 approved research areas, validates public references and selected GitHub metadata, records immutable evidence, and provides a searchable local interface. On November 21, a native event-triggered test refreshed 1,115 public-source references; 192 GitHub repositories appear in a separate saved verification snapshot. Source and test evidence are not publication approval. [Source Atlas public repository](https://github.com/ihatesirdavi/source-atlas) | [Offline demo screenshot](https://github.com/ihatesirdavi/source-atlas/blob/main/docs/screenshots/offline-overview.png) | [Local audit](scripts/local_publishing_audit.py) | [Source tests](tests/test_research_public_sources.py).
 
 The wider direction includes live local monitoring, bounded testing, media-tool orchestration, and recoverable workflows. Each project keeps its own evidence and release authority. **Local automation is not ChatGPT scheduled tasks or GitHub Actions.** Cloud CI remains a separate publication gate.
 ## Public previews
@@ -68,7 +68,7 @@ A narrow window into original, standalone functional and visual studies. Unrelea
 
 | Work | What it demonstrates | Current state |
 | :-- | :-- | :-- |
-| [**Source Atlas live agent**](docs/local-automation.md) | Native resident Windows research watcher, read-only GitHub checks, searchable source catalog, local evidence | Native local E2E passed; owner acceptance pending |
+| [**Source Atlas live agent**](https://github.com/ihatesirdavi/source-atlas) | Native resident Windows research watcher, read-only GitHub checks, searchable source catalog, local evidence | Native local E2E passed; owner acceptance pending |
 | [**SIGNAL-001 / Preview Lab**](https://ihatesirdavi.github.io/preview-lab/) | Original bounded interactive field, three visual modes, tested source and preview evidence | Public prototype; owner acceptance pending |
 | [**DYNAMICS-002 / Preview Lab**](https://ihatesirdavi.github.io/preview-lab/dynamics.html) | Three-body gravitational simulation, measured energy drift, native regression tests, bounded visuals | Public prototype; owner review pending |
 | [**GitHub profile source**](https://github.com/ihatesirdavi/ihatesirdavi) | Reproducible raster/motion design from real previews, Python validators, GitHub Actions, and documented lessons | Public source; new visual pending owner acceptance |

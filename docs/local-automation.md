@@ -4,7 +4,7 @@ This project showcases **live, locally resident Windows automation** executed on
 
 ## Current architecture: Source Atlas, a live local agent (November 21, 2026)
 
-[Source Atlas](../desktop/SourceAtlas/) is a native Windows desktop application built on the installed .NET Windows Desktop runtime. It is a **session-resident agent**, not a Windows scheduled task, ChatGPT task, duplicate service, or web server.
+[Source Atlas](https://github.com/ihatesirdavi/source-atlas) is a native Windows desktop application built on the installed .NET Windows Desktop runtime. It is a **session-resident agent**, not a Windows scheduled task, ChatGPT task, duplicate service, or web server.
 
 **Local lifecycle**
 
